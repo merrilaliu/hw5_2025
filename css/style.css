@@ -1,0 +1,148 @@
+@keyframes change {
+    from {
+      width: 25px; /* 25px is the width of the logo */
+      opacity: 0;
+    }
+    to {
+      width: 475px;
+      opacity: 1;
+    }
+}
+  
+#logo {
+    animation: change 5s forwards; /* 5s is the duration of the animation */
+}
+  
+body {
+    font-family: 'Poppins', serif; /* 'Poppins' is the font family,backup font is serif */
+    background-image: url('images/concrete_seamless.png'); /* background image */
+    background-color: #f1f1f1; /* backup color */
+}
+
+header{
+    display: flex;
+    flex-direction: column; /* Column layout */
+    align-items: center;
+}
+
+.nav_links {
+    display: flex;
+    flex-direction: column; /* Column layout */
+    align-items: center;
+}
+  
+.nav_links a:link,
+.nav_links a:visited {
+    color: blue; /* Set color as blue before and after click*/
+    text-decoration: underline;
+}
+
+.card > header { /* Select the header inside the card */
+    background: #288088;
+    border: solid 2px #45ADAD;
+    padding: 20px 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.card {
+    border-radius: 50px 50px 0 0; /* Set border radius to match the header*/
+    flex: 1 1 450px;
+}
+
+.pricing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery img {
+    border: 10px solid #50C7C7;
+    width: 300px;
+    margin: 10px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap; /* Wrap the images */
+    justify-content: center;
+    align-items: stretch; /* Stretch the images to ensure same height*/
+}
+  
+/* 900px+ view */
+
+@media (min-width: 900px) {
+    header:not(main header) { /* Select the header that is not inside the main tag */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: sticky; /* Sticky position to hold the header */
+        top: 0; /* Top of the page */
+        z-index: 1000;
+    }
+  
+    .nav_links {
+        display: flex;
+        flex-direction: row; /* Row layout to have the links in a row */
+    }
+
+    .pricing {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .card {
+        flex: 0 1 275px; /* Set the flex basis to 275px */
+        text-align: left;
+        align-items: flex-start;  /* Align the items to the start */
+    }
+
+    .card > header, .card > ul>li>header{ /* Select the header inside the card */
+        text-align: left;
+        align-items: flex-start; /* Align the items to the start */
+    }
+      
+}
+
+/* reduced motion view */
+@media (prefers-reduced-motion: reduce) {
+    #logo {
+      animation: none;
+    }
+}
+  
+
+/* portrait mode */
+@media print {
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: none; /* Remove the background image */
+    }
+  
+    .nav_links {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row; /* Row layout */
+    }
+  
+    .pricing {
+        display: flex;
+        flex-wrap: nowrap; /* Remove wrap */
+        justify-content: space-between;
+        flex-direction: row;
+    }
+  
+    .card {
+        flex-basis: 325px;
+        border: 2px solid #45ADDD;
+    }
+  
+    .card ul li:nth-child(2)::after {
+        content: "\1F44D"; /* Add a thumbs up emoji */
+    }
+  
+    #gallery, .gallery {
+        display: none;
+    }
+  
+}
